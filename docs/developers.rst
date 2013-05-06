@@ -22,6 +22,10 @@ Now get the source via GitHub_
 
 .. _GitHub: http://github.com/ulif/pail
 
+.. code-block:: console
+
+  $ git clone https://github.com/ulif/pail
+
 and change into the created `pail/` directory.
 
 The development setup is done with:
@@ -30,30 +34,34 @@ The development setup is done with:
 
   (py27)$ python setup.py dev
 
-This step mainly installs the required (py.test) packages locally.
+This step mainly installs the required external packages (mainly
+`Pillow` and `WebOb`) and needed testing components (`py.test` and
+`pytest-cov`) locally in your virtualenv.
 
 Testing
 +++++++
 
-You can run tests for a single Python version with:
+`pail` testing uses `py.test`. The recommended way to run tests is
+therefore:
 
 .. code-block:: console
 
-  (py27)$ python setup.py tests
+  (py27)$ py.test
 
-As `py.test` should be installed locally (in the virtualenv) already
-now, you can also use the installed `py.test` directly:
+`py.test` should be installed already if you completed the steps
+above.
+
+You could also run ``$ python setup.py tests``, but this approach is
+less flexible. For instance you currently cannot pass arguments to the
+test-runner.
+
+For testing with several Python versions in one row `pail` also
+provides a ``tox.ini``. So, if you have tox_ installed, you can run
+tests for different Python versions like this:
 
 .. code-block:: console
 
-  (py27)$ py.test pail
-
-`pail` also provides a ``tox.ini``. So, if you have tox_ installed, you
-can run tests for different Python versions in one row:
-
-.. code-block:: console
-
-  (py27)$ pip install tox
+  (py27)$ pip install tox  # required only once
   (py27)$ tox
 
 Modify `tox.ini` to your needs.
@@ -73,7 +81,7 @@ patches please make sure that test coverage is at 100%.
 Spinx-Docs
 ++++++++++
 
-The `pail` docs are created using `Sphinx`. The required packages can
+The `pail` docs are created using `Sphinx`_. The required packages can
 be installed locally doing:
 
 .. code-block:: console
@@ -81,7 +89,7 @@ be installed locally doing:
   (py27)$ python setup.py docs
 
 This will not generate the docs but install the packages needed to
-create the docs.
+create the docs, most notably `Sphinx`_.
 
 The actual docs can then be created with:
 
@@ -93,3 +101,4 @@ Sources for the docs can be found (you guessed it) in the ``docs/``
 directory.
 
 .. _tox: https://pypi.python.org/pypi/tox
+.. _Sphinx: http://sphinx-doc.org/

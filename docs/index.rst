@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 
-.. include:: ../README.txt
+.. include:: ../README.rst
 
 Documentation (detailed)
 ========================
@@ -30,5 +30,7 @@ Indices and tables
 
 License
 =======
+
+.. include:: ../COPYRIGHT.txt
 
 .. include:: ../CHANGES.txt
