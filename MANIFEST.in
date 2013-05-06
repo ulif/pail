@@ -1,0 +1,15 @@
+include LICENSE.txt
+include README.txt
+include CHANGES.txt
+include bootstrap.py
+include buildout.cfg
+include setup.py
+include tox.ini
+# include varnish.cfg
+# include versions.cfg
+
+recursive-include docs *
+prune docs/_build
+recursive-include tests *
+
+global-exclude *pyc

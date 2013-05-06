@@ -1,0 +1,7 @@
+Changes
+=======
+
+0.1dev (unreleased)
+-------------------
+
+- First implementation based on Matt Wilcox' PHP script.

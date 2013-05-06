@@ -1,0 +1,6 @@
+Credits
+=======
+
+Adapting Images base idea: Matt Wilcox
+
+Created by Uli Fouquet
