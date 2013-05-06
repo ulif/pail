@@ -100,5 +100,14 @@ The actual docs can then be created with:
 Sources for the docs can be found (you guessed it) in the ``docs/``
 directory.
 
+Running the WSGI Middleware Locally
++++++++++++++++++++++++++++++++++++
+
+If you want to see the whole machinery in real action, you need some
+local (WSGI) server. Using Paste_ this is not difficult to set up.
+
+See :ref:`deployment` for details.
+
 .. _tox: https://pypi.python.org/pypi/tox
 .. _Sphinx: http://sphinx-doc.org/
+.. _Paste: http://pythonpaste.org/
