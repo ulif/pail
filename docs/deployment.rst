@@ -1,3 +1,5 @@
+.. _deployment:
+
 Deployment -- How to Use `pail`
 ===============================
 
