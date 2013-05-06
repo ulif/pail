@@ -151,9 +151,10 @@ Now install the missing ``paster`` packages and start the server:
 Now, browsing http://localhost:8000/ you should see the generated page
 with the image included. Nothing special. Nothing? If you are using a
 desktop and the original image (put into the static dir) was wider
-than 1024 pixels, it should automatically have been *downscaled to
-1024 px* width. The same page watched from a mobile device with <= 480
-px screen width should automatically get an image with *width 480 px*.
+than 1024 pixels, while the desktop has a maximum resolution of
+1024px, it should automatically have been *downscaled to 1024 px*
+width. The same page watched from a mobile device with <= 480 px
+screen width should automatically get an image with *width 480 px*.
 
 You can force that switch on a single machine by replacing the
 ``Math.max()`` expression in the JavaScript part to some fixed value
