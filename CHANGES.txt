@@ -1,7 +1,7 @@
 Changes
 =======
 
-0.1dev (unreleased)
+0.1 (2012-05-07)
 -------------------
 
 - First implementation based on Matt Wilcox' PHP script.

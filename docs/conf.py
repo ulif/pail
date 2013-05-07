@@ -48,10 +48,9 @@ copyright = u'2013, Uli Fouquet'
 # built documents.
 #
 # The short X.Y version.
-version = '0.1dev'
 import pkg_resources
 version = pkg_resources.get_distribution('pail').version
-#version = __version__
+
 # The full version, including alpha/beta/rc tags.
 release = version
 if release.endswith('dev'):
