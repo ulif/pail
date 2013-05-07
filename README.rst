@@ -40,7 +40,7 @@ Links
 - Full documentation_ (including deployment examples)
 - `Fork me on GitHub`_
 
-.. _documentation: http://packages.python.org/pail
+.. _documentation: http://pail.readthedocs.org
 .. _Adaptive Images: http://adaptive-images.com
 .. _Responsive Designs: http://www.abookapart.com/products/responsive-web-design
 .. _Fluid Image: http://unstoppablerobotninja.com/entry/fluid-images/
