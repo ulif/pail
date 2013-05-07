@@ -1,15 +1,16 @@
 include LICENSE.txt
 include README.rst
 include CHANGES.txt
+include COPYRIGHT.txt
 include bootstrap.py
 include buildout.cfg
+include setup.cfg
 include setup.py
 include tox.ini
-# include varnish.cfg
-# include versions.cfg
+include pytest.ini
 
 recursive-include docs *
 prune docs/_build
-recursive-include tests *
 
-global-exclude *pyc
+prune *.pyc
+prune *.pyo
