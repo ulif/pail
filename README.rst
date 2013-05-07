@@ -6,8 +6,10 @@ small images to small devices.
 
 .. raw:: html
 
-  <a href="https://travis-ci.org/ulif/pail">
-   <img src="https://travis-ci.org/ulif/pail.png?branch=master" /></a>
+  <div>
+    <a href="https://travis-ci.org/ulif/pail">
+      <img src="https://travis-ci.org/ulif/pail.png?branch=master" /></a>
+  </div>
 
 It detects your visitor's screen size and automatically creates, and
 delivers device appropriate re-scaled versions of your web page's
