@@ -2,8 +2,6 @@ include LICENSE.txt
 include README.rst
 include CHANGES.txt
 include COPYRIGHT.txt
-include bootstrap.py
-include buildout.cfg
 include setup.cfg
 include setup.py
 include tox.ini
