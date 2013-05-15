@@ -288,6 +288,35 @@ class ShouldAdaptTests(unittest.TestCase):
         return
 
 
+class IsMobileTests(unittest.TestCase):
+    # tests for ImageAdaptingMiddleware.is_mobile()
+
+    def setUp(self):
+        self.middleware = ImageAdaptingMiddleware(None, {})
+        self.request = Request.blank('http://localhost/test.html')
+
+    def test_no_infos(self):
+        # w/o any infos we assume a request comes from non-mobile
+        self.assertEqual(
+            False, self.middleware.is_mobile(self.request))
+        return
+
+    def test_non_mobile(self):
+        # we can detect non-mobiles clients
+        self.request.headers['HTTP_USER_AGENT'] = 'amaya/9.51 libwww/5.4.0'
+        self.assertEqual(
+            False, self.middleware.is_mobile(self.request))
+        return
+
+    def test_is_mobile(self):
+        # we can detect mobile devices
+        self.request.headers[
+            'HTTP_USER_AGENT'] = 'BlackBerry7730/3.7.1 UP.Link/5.1.2.5'
+        self.assertEqual(
+            True, self.middleware.is_mobile(self.request))
+        return
+
+
 class InitParamsTests(unittest.TestCase):
     # Tests for initial values of ImageAdaptingMiddleware
 
