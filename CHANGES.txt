@@ -4,6 +4,7 @@ Changes
 0.2 (unreleased)
 ----------------
 
+- Add very plain mobile detection.
 - Removed zc.buildout stuff (we do not need it).
 
 0.1 (2012-05-07)
