@@ -2,10 +2,6 @@ import os
 import shutil
 import tempfile
 import unittest
-try:
-    from cStringIO import StringIO
-except ImportError:                     # pragma: no cover
-    from io import BytesIO as StringIO  # pragma: no cover
 from PIL import Image
 from pail.helpers import resize, get_file_length, to_int_list, get_resolution
 
