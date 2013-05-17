@@ -34,7 +34,7 @@ docs_require = ['Sphinx', 'Pygments']
 
 setup(
     name='pail',
-    version='0.2',
+    version='0.3dev',
     author='Uli Fouquet',
     author_email='uli@gnufix.de',
     packages=['pail', 'pail.tests'],
