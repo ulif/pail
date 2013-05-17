@@ -4,7 +4,11 @@ Changes
 0.2 (unreleased)
 ----------------
 
-- Add very plain mobile detection.
+- Add very plain mobile detection. Now, if no device width is given
+  (via cookie) detected mobile devices get images with the smallest
+  predefined resolution while non-mobile devices get the images with
+  the largest predefined resolution.
+
 - Removed zc.buildout stuff (we do not need it).
 
 0.1 (2012-05-07)
