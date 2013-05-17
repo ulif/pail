@@ -8,7 +8,7 @@ small images to small devices.
 
   <div>
     <a href="https://travis-ci.org/ulif/pail">
-      <img src="https://travis-ci.org/ulif/pail.png?branch=master" /></a>
+      <img src="https://travis-ci.org/ulif/pail.png?branch=develop" /></a>
   </div>
 
 It detects your visitor's screen size and automatically creates, and

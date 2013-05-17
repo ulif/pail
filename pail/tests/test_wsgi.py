@@ -190,6 +190,34 @@ class WSGITests(unittest.TestCase):
         self.assertEqual(image.size, (128, 128))
         return
 
+    def test_non_mobile_client(self):
+        # non mobile clients will get the largest resolution in
+        # resolution list
+        app = ImageAdaptingMiddleware(
+            wsgi_app_img_jpg, {}, resolutions="64, 32")
+        request = self.get_request(cookie=None)
+        request.headers['HTTP_USER_AGENT'] = 'amaya/9.51 libwww/5.4.0'
+        response = request.get_response(app)
+        img_data = response.body
+        image = Image.open(StringIO(img_data))
+        self.assertEqual(image.size, (64, 64))
+        return
+
+    def test_mobile_client(self):
+        # mobile clients get the smallest resolution in resolution
+        # list.
+        app = ImageAdaptingMiddleware(
+            wsgi_app_img_jpg, {}, resolutions="64, 32")
+        request = self.get_request(cookie=None)
+        request.headers[
+            'HTTP_USER_AGENT'] = 'BlackBerry7730/3.7.1 UP.Link/5.1.2.5'
+        response = request.get_response(app)
+        img_data = response.body
+        image = Image.open(StringIO(img_data))
+        self.assertEqual(image.size, (32, 32))
+        return
+
+
 class GetClientResolutionTests(unittest.TestCase):
     # tests for ImageAdaptingMiddleware.get_client_resolution
 
@@ -285,6 +313,35 @@ class ShouldAdaptTests(unittest.TestCase):
         response = request.get_response(wsgi_app_img_png)
         self.assertEqual(
             self.middleware.should_adapt(response), True)
+        return
+
+
+class IsMobileTests(unittest.TestCase):
+    # tests for ImageAdaptingMiddleware.is_mobile()
+
+    def setUp(self):
+        self.middleware = ImageAdaptingMiddleware(None, {})
+        self.request = Request.blank('http://localhost/test.html')
+
+    def test_no_infos(self):
+        # w/o any infos we assume a request comes from non-mobile
+        self.assertEqual(
+            False, self.middleware.is_mobile(self.request))
+        return
+
+    def test_non_mobile(self):
+        # we can detect non-mobiles clients
+        self.request.headers['HTTP_USER_AGENT'] = 'amaya/9.51 libwww/5.4.0'
+        self.assertEqual(
+            False, self.middleware.is_mobile(self.request))
+        return
+
+    def test_is_mobile(self):
+        # we can detect mobile devices
+        self.request.headers[
+            'HTTP_USER_AGENT'] = 'BlackBerry7730/3.7.1 UP.Link/5.1.2.5'
+        self.assertEqual(
+            True, self.middleware.is_mobile(self.request))
         return
 
 
