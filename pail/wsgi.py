@@ -78,27 +78,57 @@ class ImageAdaptingMiddleware(object):
 
     def get_client_resolution(self, request):
         """Get the client screen resolution from request.
+
+        Returns a tuple ``(CLIENT_SCREEN_WIDTH, RETINA_VALUE)``.
+
+        Here ``CLIENT_SCREEN_WITH`` gives the assumed screen width of the
+        client device (an integer) or ``None``.
+
+        ``RETINA_VALUE`` represents the factor of retina displays and
+        is always an integer. If one CSS pixel stands for three
+        physical pixels, this value would be ``3``. If no such value
+        can be extracted from request, the default value ``1`` is
+        returned.
+
+        The method expects in `request` a cookie named `resolution`
+        containing either a single integer or a float.
+
+        If the value is an integer, we assume a retina value of
+        ``1``. Otherwise we expect the client screen width before the
+        dot and the retina factor after the dot.
+
+        So a client providing a device width of 640 (CSS) pixels but
+        with a retina display, that supports 3 physical pixels per CSS
+        pixel, should pass in a cookie named `resolution` with value
+        of ``640.3``.
         """
         cookies = request.cookies
         if not cookies:
-            return None
+            return (None, 1)
         cookie = cookies.get('resolution')
         if not cookie:
-            return None
+            return (None, 1)
+        resolution, retina_value = cookie, '1'
+        if '.' in cookie:
+            resolution, retina_value = cookie.split('.', 1)
         try:
-            resolution = int(cookie)
+            resolution = int(resolution)
         except ValueError:
-            return None
-        return resolution
+            resolution = None
+        try:
+            retina_value = int(retina_value)
+        except ValueError:
+            retina_value = 1
+        return (resolution, retina_value)
 
     def get_resolution(self, request):
         """Determine a desired resolution from client screen
         resolution and avaiilable resolutions.
         """
-        client_resolution = self.get_client_resolution(request)
+        client_resolution, retina_value = self.get_client_resolution(request)
         is_mobile = self.is_mobile(request)
         return get_resolution(
-            client_resolution, 1, self.resolutions, is_mobile)
+            client_resolution, retina_value, self.resolutions, is_mobile)
 
     def should_ignore(self, request, resolution):
         """Should the given request be ignored?
