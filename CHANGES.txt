@@ -4,7 +4,7 @@ Changes
 0.3dev (unreleased)
 -------------------
 
-- No changes yet.
+- Support retina displays.
 
 0.2 (2013-05-17)
 ----------------
