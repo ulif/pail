@@ -123,7 +123,7 @@ class ImageAdaptingMiddleware(object):
 
     def get_resolution(self, request):
         """Determine a desired resolution from client screen
-        resolution and avaiilable resolutions.
+        resolution and available resolutions.
         """
         client_resolution, retina_value = self.get_client_resolution(request)
         is_mobile = self.is_mobile(request)
