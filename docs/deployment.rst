@@ -3,15 +3,16 @@
 Deployment -- How to Use `pail`
 ===============================
 
-`pail` provides a `WSGI`_ middleware component
+`pail` provides a `WSGI`_ middleware component compliant with
+`Paste`_-based request and response objects.
 
 .. code-block:: python
 
   from pail.wsgi import ImageAdaptingMiddleware
 
 that does all the work. It requires a list of supported `resolutions`
-(string with a comma-separated list of integers like ``"480, 922, 1322"``). Also a factory for
-this middleware is available:
+(string with a comma-separated list of integers like ``"480, 922,
+1322"``). Also a factory for this middleware is available:
 
 .. code-block:: python
 
