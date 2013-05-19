@@ -229,28 +229,42 @@ class GetClientResolutionTests(unittest.TestCase):
     def test_no_cookie(self):
         # w/o cookie -> no resolution
         self.assertEqual(
-            self.middleware.get_client_resolution(self.request), None)
+            self.middleware.get_client_resolution(self.request), (None, 1))
         return
 
     def test_no_cookie_with_resolution_key(self):
         # we need a cookie named 'resolution' to get a resolution
         self.request.headers['Cookie'] = 'foo=bar; $Path=/'
         self.assertEqual(
-            self.middleware.get_client_resolution(self.request), None)
+            self.middleware.get_client_resolution(self.request), (None, 1))
         return
 
     def test_resolution_not_an_integer(self):
         # resolution cookie must contain some integer
         self.request.headers['Cookie'] = 'resolution=not-a-number; $Path=/'
         self.assertEqual(
-            self.middleware.get_client_resolution(self.request), None)
+            self.middleware.get_client_resolution(self.request), (None, 1))
         return
 
     def test_resolution(self):
         # integers can be extracted from the resolution cookie
         self.request.headers['Cookie'] = 'resolution=1024; $Path=/'
         self.assertEqual(
-            self.middleware.get_client_resolution(self.request), 1024)
+            self.middleware.get_client_resolution(self.request), (1024, 1))
+        return
+
+    def test_resolution_invalid_retina_value(self):
+        # if retina value is broken, we get 1 as default
+        self.request.headers['Cookie'] = 'resolution=123.trash; $Path=/'
+        self.assertEqual(
+            self.middleware.get_client_resolution(self.request), (123, 1))
+        return
+
+    def test_resolution_with_retina_value(self):
+        # we can also get a retina value from the resolution cookie
+        self.request.headers['Cookie'] = 'resolution=1024.2; $Path=/'
+        self.assertEqual(
+            self.middleware.get_client_resolution(self.request), (1024, 2))
         return
 
 
