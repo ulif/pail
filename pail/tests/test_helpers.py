@@ -47,7 +47,8 @@ class HelperTests(unittest.TestCase):
     def test_resize_broken_file(self):
         # broken images are not resized
         broken = os.path.join(self.tempdir, 'broken.jpg')
-        open(broken, 'w').write('blah blah')
+        with open(broken, 'w') as fd:
+            fd.write('blah blah')
         self.assertEqual(
             resize(broken, 64), None)
         return
@@ -55,7 +56,8 @@ class HelperTests(unittest.TestCase):
     def test_get_file_length(self):
         # make sure get_file_length works as expected
         path = os.path.join(self.tempdir, 'testfile1')
-        open(path, 'w').write('1234567890')
+        with open(path, 'w') as fd:
+            fd.write('1234567890')
         self.assertEqual(
             get_file_length(open(path, 'rb')), 10)
         return
