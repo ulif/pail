@@ -4,6 +4,8 @@ Changes
 0.3.dev0 (unreleased)
 ---------------------
 
+- Drop support for Python 3.2.
+
 - Officially support Python 3.4.
 
 - Support retina displays.
