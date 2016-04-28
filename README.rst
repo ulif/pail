@@ -45,11 +45,11 @@ Links
 - Full documentation_ (including deployment examples)
 - `Fork me on GitHub`_
 
-.. _documentation: http://pail.readthedocs.org
+.. _documentation: http://pail.readthedocs.io
 .. _Adaptive Images: http://adaptive-images.com
 .. _Responsive Designs: http://www.abookapart.com/products/responsive-web-design
 .. _Fluid Image: http://unstoppablerobotninja.com/entry/fluid-images/
 .. _Fork me on GitHub: http://github.com/ulif/pail
-.. _WSGI: http://wsgi.readthedocs.org/en/latest/
+.. _WSGI: http://wsgi.readthedocs.io/en/latest/
 .. _Paste: http://pythonpaste.org/
 .. _PHP Script: http://github.com/mattwilcox/Adaptive-Images
